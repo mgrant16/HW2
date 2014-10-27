@@ -4,5 +4,10 @@ class Movie < ActiveRecord::Base
   def self.rates
   	['G', 'PG', 'PG-13', 'R']
   end
- 
+  
+  def self.filter_rating(rates)
+  	rate = rates.keys.map {|key| key.to_s} rates.is_a? Hash
+  	where(:rating => rate)
+  end
+  
 end
